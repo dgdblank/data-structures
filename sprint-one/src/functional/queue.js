@@ -5,7 +5,7 @@ var Queue = function(){
   var storage = {};
   var size = 0;
   var counter = 0;
-  var nthLine = [];
+  var lineSpace = [];
 
   // Implement the methods below
 
@@ -13,15 +13,15 @@ var Queue = function(){
     storage[counter] = value;
     size++;
 
-    nthLine.push(counter);
+    lineSpace.push(counter);
     counter++;
   };
 
   someInstance.dequeue = function(){
-    var current = storage[nthLine[0]];
-    delete storage[nthLine[0]];
+    var current = storage[lineSpace[0]];
+    delete storage[lineSpace[0]];
     size--;
-    nthLine.shift();
+    lineSpace.shift();
     return current;
 
   };

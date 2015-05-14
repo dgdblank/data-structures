@@ -4,7 +4,7 @@ var Queue = function(){
   var someInstance = {};
   someInstance.total = 0;
   someInstance.counter = 0;
-  someInstance.nthLine = [];
+  someInstance.lineSpace = [];
   someInstance.storage = {};
   _.extend(someInstance, queueMethods);
   return someInstance;
@@ -14,15 +14,15 @@ var queueMethods = {};
 queueMethods.enqueue = function(value){
   this.storage[this.counter] = value;
   this.total++;
-  this.nthLine.push(this.counter);
+  this.lineSpace.push(this.counter);
   this.counter++;
 }
 
 queueMethods.dequeue = function(){
-  var current = this.storage[this.nthLine[0]];
-  delete this.storage[this.nthLine[0]];
+  var current = this.storage[this.lineSpace[0]];
+  delete this.storage[this.lineSpace[0]];
   this.total--;
-  this.nthLine.shift();
+  this.lineSpace.shift();
   return current;
 }
 
