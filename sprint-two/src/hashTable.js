@@ -4,14 +4,24 @@ var HashTable = function(){
 };
 
 HashTable.prototype.insert = function(k, v){
+  var list = LinkedList();
   var i = getIndexBelowMaxForKey(k, this._limit);
-  node = Node.v;
-  this._storage.set(i, node.v);
+  if(this._storage.get(i) === null){
+  this._storage.set(i, list.addToTail([k,v]));
+  }else{
+    this._storage.list.addToTail([k,v]);
+  }
 };
 
 HashTable.prototype.retrieve = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  return this._storage.get(i);
+  var firstNode = this._storage.get(i);
+  //using contains
+    //traverse the nodes in storage[i]
+      //when we get true
+        //return Node
+          //return value from Node
+
 
 };
 
