@@ -32,16 +32,16 @@ HashTable.prototype.retrieve = function(k){
 
 HashTable.prototype.remove = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  var previous = null;
   var current = this._list.head;
   var result;
   while(current !== null){
     if(current.value[0] === k){
-      previous = current.next;
-      return result = current;
-    } else {
-      current = current.next;
+      result = current.value[1];
+      current.value[1] = null;
+      return result;
     }
+
+      current = current.next;
   }
 
   return result;
