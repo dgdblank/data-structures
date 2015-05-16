@@ -1,42 +1,58 @@
 var BinarySearchTree = function(value){
-  this.root = value;
-  this.left = null;
-  this.right = null;
-
+  var bst = Object.create(binaryTreeMethods);
+  bst.value = value;
+  bst.left = null;
+  bst.right = null;
+  return bst;
 };
 
+var binaryTreeMethods = {};
 
-BinarySearchTree.prototype.insert = function(value){
+binaryTreeMethods.insert = function(value){
   var traverse = function(node){
-        //if our value is less than node
-    if(value<this.root){
-      if(this.left === null){
-        this.left = BinarySearchTree(value);
+    if(value < node.value){
+      if(node.left === null){
+        node.left = BinarySearchTree(value);
       }
       else{
-        traverse(this.left);
+        traverse(node.left);
       }
-      //this.left = value;
     }
     else{
-      if(this.right === null){
-        this.right = BinarySearchTree(value);
+      if(node.right === null){
+        node.right = BinarySearchTree(value);
       }
       else{
-        traverse(this.right);
+        traverse(node.right);
       }
     }
-    //else
-      //this.right = value;
   }
 
+  traverse(this);
 }
 
-BinarySearchTree.prototype.contains = function(value){
+binaryTreeMethods.contains = function(value){
+ var result = false;
 
+  var checkValue = function(node){
+    debugger;
+    if(value === node.value){
+      return result = true;
+      } else{
+        if(value < node.value && node.left){
+          checkValue(node.left);
+        }
+        else if (value > node.value && node.right){
+          checkValue(node.right);
+        }
+       }
+    };
+
+  checkValue(this);
+  return result;
 }
 
-BinarySearchTree.prototype.depthFirstLog = function(callback){
+binaryTreeMethods.depthFirstLog = function(callback){
 
 }
 /*
