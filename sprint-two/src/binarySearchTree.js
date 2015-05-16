@@ -35,7 +35,6 @@ binaryTreeMethods.contains = function(value){
  var result = false;
 
   var checkValue = function(node){
-    debugger;
     if(value === node.value){
       return result = true;
       } else{
@@ -53,7 +52,17 @@ binaryTreeMethods.contains = function(value){
 }
 
 binaryTreeMethods.depthFirstLog = function(callback){
+  var performLog = function(node){
+      callback(node.value);
+      if(node.left !== null){
+        performLog(node.left)
+      } else if(node.right !== null){
+        performLog(node.right);
+      }
+    };
 
+
+  performLog(this);
 }
 /*
  * Complexity: What is the time complexity of the above functions?
