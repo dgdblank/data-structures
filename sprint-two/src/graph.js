@@ -32,6 +32,7 @@ Graph.prototype.removeNode = function(node){
 	this.nodes = remain;
 };
 
+
 Graph.prototype.hasEdge = function(fromNode, toNode){
 	var result = false;
 	for(var i = 0; i < this.edges.length; i++){
@@ -64,6 +65,7 @@ Graph.prototype.forEachNode = function(cb){
 	for(var i = 0; i < this.nodes.length; i++){
 		cb(this.nodes[i]);
 	}
+
 };
 
 /*
